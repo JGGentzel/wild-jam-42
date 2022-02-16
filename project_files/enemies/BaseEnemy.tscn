@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://psuekbqgc71g"]
+
+[ext_resource type="Script" path="res://enemies/BaseEnemy.gd" id="1_kx0xn"]
+[ext_resource type="Texture2D" uid="uid://ce4p8blqcr10w" path="res://enemies/EyeMonster.svg" id="2_csvtf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nlygy"]
+radius = 109.458
+
+[node name="BaseEnemy" type="CharacterBody2D" groups=["Enemies"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( "1_kx0xn" )
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource( "2_csvtf" )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( "CircleShape2D_nlygy" )

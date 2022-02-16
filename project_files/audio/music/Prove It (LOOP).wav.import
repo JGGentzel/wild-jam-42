@@ -1,0 +1,22 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+uid="uid://hh3yj6ljmixv"
+path="res://.godot/imported/Prove It (LOOP).wav-31dd08ee202c4ef17bf9bbf36fa5b46a.sample"
+
+[deps]
+
+source_file="res://audio/music/Prove It (LOOP).wav"
+dest_files=["res://.godot/imported/Prove It (LOOP).wav-31dd08ee202c4ef17bf9bbf36fa5b46a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

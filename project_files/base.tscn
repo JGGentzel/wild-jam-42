@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://hntxysdpklo0"]
+
+[ext_resource type="PackedScene" uid="uid://bchc8chn5wxka" path="res://kid/kid.tscn" id="1_bb5w6"]
+[ext_resource type="PackedScene" uid="uid://psuekbqgc71g" path="res://enemies/BaseEnemy.tscn" id="2_8dsmw"]
+[ext_resource type="AudioStream" uid="uid://beyv41pb6xnvy" path="res://audio/music/You Beast! (LOOP).wav" id="3_f5cut"]
+[ext_resource type="Texture2D" uid="uid://sbqeaoloutsw" path="res://icon.png" id="4_xbmf7"]
+
+[node name="Base" type="Node2D"]
+
+[node name="Kid" parent="." instance=ExtResource( "1_bb5w6" )]
+position = Vector2(1024, 601)
+
+[node name="Camera2D" type="Camera2D" parent="Kid"]
+current = true
+
+[node name="BaseEnemy" parent="." instance=ExtResource( "2_8dsmw" )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( "3_f5cut" )
+autoplay = true
+
+[node name="Axis" type="Node2D" parent="."]
+visible = false
+
+[node name="x" type="Sprite2D" parent="Axis"]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(76.08, 0.120002)
+texture = ExtResource( "4_xbmf7" )
+
+[node name="y" type="Sprite2D" parent="Axis"]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(-0.120006, 64.48)
+texture = ExtResource( "4_xbmf7" )
