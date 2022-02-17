@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bchc8chn5wxka"]
+[gd_scene load_steps=28 format=3 uid="uid://bchc8chn5wxka"]
 
 [ext_resource type="Script" path="res://kid/kid.gd" id="1_efxqn"]
 [ext_resource type="Texture2D" uid="uid://bvwkve7u8ow6h" path="res://kid/textures/board_side.svg" id="2_fevmp"]
@@ -10,14 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://q78adq5slb82" path="res://kid/textures/body.svg" id="7_h7tkx"]
 [ext_resource type="Texture2D" uid="uid://ctcl65ks8hdyr" path="res://kid/textures/head.svg" id="7_u6p8b"]
 [ext_resource type="Texture2D" uid="uid://c42ts2ackxon" path="res://kid/textures/fist_l.svg" id="10_cwnsm"]
+[ext_resource type="Texture2D" uid="uid://ichd811nto77" path="res://kid/textures/hand_l.svg" id="11_jcmxh"]
 [ext_resource type="Texture2D" uid="uid://cq01wnj7o6x16" path="res://Effects/Smoke.svg" id="11_mnt5p"]
+[ext_resource type="PackedScene" uid="uid://c8sfxvjxuloi1" path="res://utils/DamageOther.tscn" id="12_k5n8o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iin3h"]
 radius = 38.7662
 height = 139.997
-
-[sub_resource type="StreamTexture2D" id="StreamTexture2D_7hioq"]
-load_path = "res://.godot/imported/hand_l.svg-f4ce76fabb868005fd2279a665b0c3a7.stex"
 
 [sub_resource type="Gradient" id="Gradient_70kgd"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -1300,11 +1299,11 @@ tracks/17/path = NodePath(".")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(0.55),
+"times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"on_skate_can_cancel"
+"method": &"on_skate_end"
 }]
 }
 tracks/18/type = "value"
@@ -1442,7 +1441,7 @@ offset = Vector2(-13.5, 10)
 [node name="Hand_l" type="Sprite2D" parent="root/hips/Arm_l"]
 position = Vector2(-19.766, 30.728)
 rotation = 0.397935
-texture = SubResource( "StreamTexture2D_7hioq" )
+texture = ExtResource( "11_jcmxh" )
 offset = Vector2(5.426, 17.394)
 
 [node name="BoardSmokeTrail" type="GPUParticles2D" parent="root"]
@@ -1482,6 +1481,8 @@ shape = SubResource( "CapsuleShape2D_4170m" )
 
 [node name="BoardHitLocation" type="Position2D" parent="."]
 position = Vector2(0, -113)
+
+[node name="DamageOther" parent="." instance=ExtResource( "12_k5n8o" )]
 
 [connection signal="body_entered" from="root/hips/board_top/board_hit_box" to="." method="_on_board_hit_box_body_entered"]
 [connection signal="body_entered" from="BoardAttackArea" to="." method="_on_board_attack_area_body_entered"]

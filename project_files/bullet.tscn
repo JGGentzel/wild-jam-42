@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdy4wwuvbu0ae"]
+[gd_scene load_steps=4 format=3 uid="uid://cdy4wwuvbu0ae"]
 
 [ext_resource type="Texture2D" uid="uid://cmvhmff30iwyo" path="res://Effects/Bullet.svg" id="1_aeoaa"]
+[ext_resource type="PackedScene" uid="uid://c8sfxvjxuloi1" path="res://utils/DamageOther.tscn" id="2_vd8wi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qftjk"]
 radius = 21.0
@@ -12,3 +13,5 @@ texture = ExtResource( "1_aeoaa" )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( "CircleShape2D_qftjk" )
+
+[node name="DamageOther" parent="." instance=ExtResource( "2_vd8wi" )]

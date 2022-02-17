@@ -8,6 +8,16 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "Node",
+"class": &"DamageOther",
+"language": &"GDScript",
+"path": "res://utils/DamageOther.gd"
+}]
+_global_script_class_icons={
+"DamageOther": ""
+}
+
 [application]
 
 config/name="WildJam42"

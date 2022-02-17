@@ -6,9 +6,10 @@ extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_root: Node2D = $root
 @onready var sound_effects: AudioStreamPlayer2D = $SoundEffects
+@onready var board_hit_location: Position2D = $BoardHitLocation
+@onready var damage_other: DamageOther = $DamageOther
 @onready var attack_sound = preload("res://audio/attack.wav")
 @onready var skate_sound = preload("res://audio/skate.wav")
-@onready var board_hit_location: Position2D = $BoardHitLocation
 @onready var board_smoke_trail: GPUParticles2D = $root/BoardSmokeTrail
 
 enum States { IDLE, RUNNING, SKATE, ATTACK }
@@ -29,7 +30,7 @@ func _process(delta: float) -> void:
 		States.SKATE:
 			animation_player.play('Skate')
 			motion_velocity = input_vector * speed * zip_intensity
-			if not Input.is_action_pressed('Skate') and can_cancel_zip:
+			if !Input.is_action_pressed('Skate') and can_cancel_zip:
 				on_skate_end()
 		States.ATTACK:
 			animation_player.play('Attack')
@@ -81,14 +82,7 @@ func on_i_frames_end() -> void:
 	is_invincible = false
 
 func damage_enemy(body, damage: int) -> void:
-	if body.has_method('on_hit') and body.is_in_group('Enemies'):
-		var direction = (body.global_position - board_hit_location.global_position).normalized()
-		print('attacker_global_position:'+str(board_hit_location.global_position))
-		print('body_name:'+str(body.name))
-		print('target_global_position:'+str(body.global_position))
-		print('attack_direction:'+str(direction))
-		print('O===[==-==>')
-		body.on_hit(direction, damage)
+	damage_other.damage_other(body, board_hit_location.global_position, damage)
 
 func on_skate_end() -> void:
 	state = States.IDLE
